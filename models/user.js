@@ -35,6 +35,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true, 
+      validate: {
+        isEmail: true, 
+      },
+    },
     phoneNumber: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -49,8 +57,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'User',
     },
     status: {
-      type: DataTypes.ENUM('accepted', 'ignored'),
-      defaultValue: 'accepted',
+      type: DataTypes.ENUM('Accepted', 'Ignored'),
+      defaultValue: 'Ignored',
     },
     createdAt: {
       allowNull: false,

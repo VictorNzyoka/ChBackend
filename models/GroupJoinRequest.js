@@ -1,6 +1,7 @@
+// models/GroupJoinRequest.js
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const UserGroups = sequelize.define('UserGroups', {
+  const GroupJoinRequest = sequelize.define('GroupJoinRequest', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -15,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    status: {
+      type: DataTypes.ENUM('pending', 'accepted', 'rejected'),
+      defaultValue: 'pending',
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
@@ -24,9 +29,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
     },
   }, {});
-  return UserGroups;
+
+  return GroupJoinRequest;
 };
-
-
-
-

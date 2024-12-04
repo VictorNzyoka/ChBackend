@@ -3,6 +3,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
+
+const authRoutes = require('./routes/authRoutes');
+const mainRoutes = require('./routes/mainadminRoutes');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -22,6 +26,9 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
     res.send('Hello world');
 });
+
+app.use('/', authRoutes);
+app.use('/', mainRoutes);
 
 // Start the server
 app.listen(PORT, () => {
